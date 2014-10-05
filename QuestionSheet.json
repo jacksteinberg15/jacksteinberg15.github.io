@@ -1,0 +1,84 @@
+{
+    "questions": [
+        {
+            "q": "1). What is the speed of light in a vacuum?",
+            "ca": "1.2x10^7",
+            "cb": "2.5x10^8",
+            "cc": "3.0x10^8",
+            "cd": "3.0x10^7",
+            "a": "3.0x10^8"
+            },
+        {
+            "q": "2). F = ___",
+            "ca": "c/v",
+            "cb": "mv",
+            "cc": "delta-y/delta-x",
+            "cd": "ma",
+            "a": "ma"
+            },
+        {
+            "q": "3). What is Newtons Third Law?",
+            "ca": "V = IR",
+            "cb": "For every action there is an equal and opposite reaction",
+            "cc": "The speed of light in a vacuum is constant",
+            "cd": "Cats can be both dead and alive",
+            "a": "For every action there is an equal and opposite reaction"
+            },
+        {
+            "q": "4). The acceleration due to gravity on Earth is approximately ___ m/s^2",
+            "ca": "9.8",
+            "cb": "3.0",
+            "cc": "144.0",
+            "cd": "96.0",
+            "a": "9.8"
+            },
+        {
+            "q": "5). How many types of quarks are there?",
+            "ca": "3",
+            "cb": "6",
+            "cc": "9",
+            "cd": "12",
+            "a": "6"
+            },
+        {
+            "q": "6). What units measure force?",
+            "ca": "Pints",
+            "cb": "GeV",
+            "cc": "Pascals",
+            "cd": "Newtons",
+            "a": "Newtons"
+            },
+        {
+            "q": "7). The first law of thermodynamics is a restatement of",
+            "ca": "Gay-Lussacs Law",
+            "cb": "Entropy",
+            "cc": "Enthalpy",
+            "cd": "Avogadros Hypothesis",
+            "a": "Entropy"
+            },
+        {
+            "q": "8). Water boils at what temperature?",
+            "ca": "100f",
+            "cb": "150f",
+            "cc": "0c",
+            "cd": "100c",
+            "a": "100c"
+            },
+        {
+            "q": "9). Electric resistance is measured in which unit?",
+            "ca": "Volts",
+            "cb": "Ohms",
+            "cc": "Amperes",
+            "cd": "Avogadros",
+            "a": "Ohms"
+            },
+        {
+            "q": "10). Which particle does NOT carry a force?",
+            "ca": "Neutron",
+            "cb": "Photon",
+            "cc": "Gluon",
+            "cd": "W boson",
+            "a": "Neutron"
+            }
+            ]
+}
