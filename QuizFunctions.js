@@ -20,7 +20,8 @@
         async: false
     });
 
-    //Snag the JSON 
+    //Snag the JSON
+    //Fix the choices for dynamic
     $.getJSON("QuestionSheet.json", function (response) {
         obj = response;
     });
