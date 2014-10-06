@@ -13,12 +13,6 @@
     //Vars for the whole document declared up here
     var qcount = 1;
     var checkeds = ["", "", "", "", "", "", "", "", "", ""];
-
-    //Cop the JSON externally ?
-    $.getJSON("QuestionSheet.json", function (obj) {
-        obj = JSON.parse(obj);
-    });
-
     //jQuery document ready
     $(document).ready(function () {
         //Hide quiz things and buttons
@@ -27,7 +21,7 @@
         $('#nextButton').hide();
         $('#submitButton').hide();
         $('#resultsfrm').hide();
-        //$('#Swag').hide();
+        $('#Swag').hide();
 
         //Pie Chart sample shenanigans
         var numright = 4;
@@ -47,7 +41,6 @@
         $('#piechart').hide();
     });
 
-    /*
     //JSON text
     var text = '{"questions":[' +
         '{ "q":"1). What is the speed of light in a vacuum?" , "ca":"1.2x10^7", "cb":"2.5x10^8", "cc":"3.0x10^8", "cd":"3.0x10^7",' +
@@ -64,10 +57,9 @@
         '{ "q":"9). Electric resistance is measured in which unit?" , "ca":"Volts", "cb":"Ohms", "cc":"Amperes", "cd":"Avogadros", "a":"Ohms" },' +
         '{ "q":"10). Which particle does NOT carry a force?" , "ca":"Neutron", "cb":"Photon", "cc":"Gluon", "cd":"W boson", "a":"Neutron"' +
         '}]}';
-        */
 
     //JSON actual
-    //var obj = JSON.parse(text);
+    var obj = JSON.parse(text);
 
     //Function to step forward a question
     function stepForward() {
