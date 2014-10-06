@@ -144,19 +144,19 @@
         //the next / prev question
         if ($('#ca').prop('checked')) {
             //$('#Swag').html("This returns a bool m80");
-            checkeds[qcount - 1] = 'c[0]["ca"]';
+            checkeds[qcount - 1] = 'ca';
             return true;
         } else if ($('#cb').prop('checked')) {
             //$('#Swag').html("This returns a bool m808");
-            checkeds[qcount - 1] = 'c[1]["cb"]';
+            checkeds[qcount - 1] = 'cb';
             return true;
         } else if ($('#cc').prop('checked')) {
             //$('#Swag').html("This returns a bool m8080");
-            checkeds[qcount - 1] = 'c[2]["cc"]';
+            checkeds[qcount - 1] = 'cc';
             return true;
         } else if ($('#cd').prop('checked')) {
             //$('#Swag').html("This returns a bool m80808");
-            checkeds[qcount - 1] = 'c[3]["cd"]';
+            checkeds[qcount - 1] = 'cd';
             return true;
         } else {
             return false;
@@ -190,7 +190,7 @@
 
             //remember to deal with color
             for (i = 0; i < 11; i++) {
-                if (obj.questions[i]['' + checkeds[i]].localeCompare(obj.questions[i]['a']) == 0) {
+                if (obj.questions[i].c[i][checkeds[i]].localeCompare(obj.questions[i]['a']) == 0) {
                     $('#r' + (i + 1)).html('<p style=\'color: #00FF00;\'>' + 'Correct' + '</p>');
                     numright += 1;
                 } else {
