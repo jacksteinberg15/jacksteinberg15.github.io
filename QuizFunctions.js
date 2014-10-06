@@ -16,16 +16,6 @@
     var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}';
     var obj = JSON.parse(text);
 
-    $.ajaxSetup({
-        async: false
-    });
-
-    //Snag the JSON
-    //Fix the choices for dynamic
-    $.getJSON("QuestionSheet.json", function (response) {
-        obj = response;
-    });
-
     //jQuery document ready
     $(document).ready(function () {
 
@@ -48,6 +38,16 @@
                     ["#00FF00", "#00FF00"],
                     ["#FF0000", "#FF0000"]
                 ]
+        });
+
+
+        $.ajaxSetup({
+            async: false
+        });
+
+        //Snag the JSON 
+        $.getJSON("QuestionSheet.json", function (response) {
+            obj = response;
         });
 
         //pieChart.draw();
