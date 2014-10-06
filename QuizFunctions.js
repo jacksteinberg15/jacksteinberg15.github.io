@@ -63,12 +63,12 @@
 
     //Function to step forward a question
     function stepForward() {
-        $('#question').html(obj.questions[qcount - 1].q).fadeOut(800);
-        $('#ca1').html(obj.questions[qcount - 1].q).fadeOut(800);
-        $('#cb1').html(obj.questions[qcount - 1].q).fadeOut(800);
-        $('#cc1').html(obj.questions[qcount - 1].q).fadeOut(800);
-        $('#cd1').html(obj.questions[qcount - 1].q).fadeOut(800);
         if (checkButtons()) {
+            $('#question').html(obj.questions[qcount - 1].q).fadeOut(800);
+            $('#ca1').html(obj.questions[qcount - 1].q).fadeOut(800);
+            $('#cb1').html(obj.questions[qcount - 1].q).fadeOut(800);
+            $('#cc1').html(obj.questions[qcount - 1].q).fadeOut(800);
+            $('#cd1').html(obj.questions[qcount - 1].q).fadeOut(800);
             if (qcount < 10)
                 qcount += 1;
             //$('#Swag').html(qcount);
