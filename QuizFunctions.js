@@ -82,13 +82,13 @@
     //Function to step forward a question
     function stepForward() {
         if (checkButtons()) {
-            /*
+
             $('#question').html(obj.questions[qcount - 1].q).fadeOut(800);
-            $('#ca1').html(obj.questions[qcount - 1].q).fadeOut(800);
-            $('#cb1').html(obj.questions[qcount - 1].q).fadeOut(800);
-            $('#cc1').html(obj.questions[qcount - 1].q).fadeOut(800);
-            $('#cd1').html(obj.questions[qcount - 1].q).fadeOut(800);
-            */
+            $('#ca1').html(obj.questions[qcount - 1].c[0]["ca"]).fadeOut(800);
+            $('#cb1').html(obj.questions[qcount - 1].c[1]["cb"]).fadeOut(800);
+            $('#cc1').html(obj.questions[qcount - 1].c[2]["cc"]).fadeOut(800);
+            $('#cd1').html(obj.questions[qcount - 1].c[3]["cd"]).fadeOut(800);
+
             if (qcount < 10)
                 qcount += 1;
             //$('#Swag').html(qcount);
@@ -196,6 +196,7 @@
                 } else {
                     $('#r' + (i + 1)).html('<p style=\'color: #FF0000;\'>' + 'Incorrect' + '</p>');
                 }
+
                 if (numright < 7)
                     $('#ratio').html('<h1 style=\'color: #FF0000;\'>' + numright + '/10</h1>');
                 else if (numright >= 7)
