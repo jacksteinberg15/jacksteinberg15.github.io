@@ -15,9 +15,9 @@
     var checkeds = ["", "", "", "", "", "", "", "", "", ""];
 
     //Cop the JSON externally ?
-    //$.getJSON("jacksteinberg15.github.io/QA.json", function (obj) {
-    //obj = JSON.parse(obj);
-    //});
+    $.getJSON("QuestionSheet.json", function (obj) {
+        obj = JSON.parse(obj);
+    });
 
     //jQuery document ready
     $(document).ready(function () {
