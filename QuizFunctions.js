@@ -13,14 +13,21 @@
     //Vars for the whole document declared up here
     var qcount = 1;
     var checkeds = ["", "", "", "", "", "", "", "", "", ""];
+    var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}'
+    var obj = JSON.parse(text);
+
+    $.ajaxSetup({
+        async: false
+    });
 
     //Snag the JSON 
-    $.getJSON("QuestionSheet.json", function (obj) {
-        obj = JSON.parse(obj);
+    $.getJSON("QuestionSheet.json", function (response) {
+        obj = response;
     });
 
     //jQuery document ready
     $(document).ready(function () {
+
         //Hide quiz things and buttons
         $('#quizform').hide();
         $('#backButton').hide();
