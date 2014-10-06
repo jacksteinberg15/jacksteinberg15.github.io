@@ -15,8 +15,8 @@
     var checkeds = ["", "", "", "", "", "", "", "", "", ""];
 
     //Snag the JSON 
-    $.getJSON("QuestionSheet.json", function (data) {
-        var obj = $.parseJSON(data);
+    $.getJSON("QuestionSheet.json", function (obj) {
+        obj = JSON.parse(obj);
     });
 
     //jQuery document ready
