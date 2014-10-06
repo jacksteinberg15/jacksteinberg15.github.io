@@ -190,7 +190,7 @@
 
             //remember to deal with color
             for (i = 0; i < 11; i++) {
-                if (obj.questions[i].c[i][checkeds[i]].localeCompare(obj.questions[i]['a']) == 0) {
+                if ((obj.questions[i].c[i][checkeds[i]]).localeCompare(obj.questions[i]['a']) == 0) {
                     $('#r' + (i + 1)).html('<p style=\'color: #00FF00;\'>' + 'Correct' + '</p>');
                     numright += 1;
                 } else {
