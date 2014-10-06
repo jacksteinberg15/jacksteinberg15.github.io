@@ -220,7 +220,7 @@
     //Draw the pie chart function
     function drawPC(numright) {
 
-        $('#name_display').html(numright);
+        //$('#name_display').html(numright);
 
         var numsright = numright;
 
