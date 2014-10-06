@@ -100,10 +100,10 @@
                 $('#backButton').show();
             }
             $('#question').html(obj.questions[qcount - 1].q).fadeIn(800);
-            $('#ca1').hide().html(obj.questions[qcount - 1].c["ca"]).fadeIn(800);
-            $('#cb1').hide().html(obj.questions[qcount - 1].c["cb"]).fadeIn(800);
-            $('#cc1').hide().html(obj.questions[qcount - 1].c["cc"]).fadeIn(800);
-            $('#cd1').hide().html(obj.questions[qcount - 1].c["cd"]).fadeIn(800);
+            $('#ca1').hide().html(obj.questions[qcount - 1].c[0]["ca"]).fadeIn(800);
+            $('#cb1').hide().html(obj.questions[qcount - 1].c[1]["cb"]).fadeIn(800);
+            $('#cc1').hide().html(obj.questions[qcount - 1].c[2]["cc"]).fadeIn(800);
+            $('#cd1').hide().html(obj.questions[qcount - 1].c[3]["cd"]).fadeIn(800);
 
             setButtons();
         }
@@ -113,10 +113,10 @@
     function stepBack() {
         //if (checkButtons()) {
         $('#question').html(obj.questions[qcount - 1].q).fadeOut(800);
-        $('#ca1').html(obj.questions[qcount - 1].c["ca"]).fadeOut(800);
-        $('#cb1').html(obj.questions[qcount - 1].c["cb"]).fadeOut(800);
-        $('#cc1').html(obj.questions[qcount - 1].c["cc"]).fadeOut(800);
-        $('#cd1').html(obj.questions[qcount - 1].c["cd"]).fadeOut(800);
+        $('#ca1').html(obj.questions[qcount - 1].c[0]["ca"]).fadeOut(800);
+        $('#cb1').html(obj.questions[qcount - 1].c[1]["cb"]).fadeOut(800);
+        $('#cc1').html(obj.questions[qcount - 1].c[2]["cc"]).fadeOut(800);
+        $('#cd1').html(obj.questions[qcount - 1].c[3]["cd"]).fadeOut(800);
         if (qcount > 1)
             qcount -= 1;
         //$('#Swag').html(qcount);
@@ -128,10 +128,10 @@
             $('#submitButton').hide();
         }
         $('#question').html(obj.questions[qcount - 1].q).fadeIn(800);
-        $('#ca1').hide().html(obj.questions[qcount - 1].c["ca"]).fadeIn(800);
-        $('#cb1').hide().html(obj.questions[qcount - 1].c["cb"]).fadeIn(800);
-        $('#cc1').hide().html(obj.questions[qcount - 1].c["cc"]).fadeIn(800);
-        $('#cd1').hide().html(obj.questions[qcount - 1].c["cd"]).fadeIn(800);
+        $('#ca1').hide().html(obj.questions[qcount - 1].c[0]["ca"]).fadeIn(800);
+        $('#cb1').hide().html(obj.questions[qcount - 1].c[1]["cb"]).fadeIn(800);
+        $('#cc1').hide().html(obj.questions[qcount - 1].c[2]["cc"]).fadeIn(800);
+        $('#cd1').hide().html(obj.questions[qcount - 1].c[3]["cd"]).fadeIn(800);
 
         setButtons();
         //}
@@ -144,19 +144,19 @@
         //the next / prev question
         if ($('#ca').prop('checked')) {
             //$('#Swag').html("This returns a bool m80");
-            checkeds[qcount - 1] = 'c["ca"]';
+            checkeds[qcount - 1] = 'c[0]["ca"]';
             return true;
         } else if ($('#cb').prop('checked')) {
             //$('#Swag').html("This returns a bool m808");
-            checkeds[qcount - 1] = 'c["cb"]';
+            checkeds[qcount - 1] = 'c[1]["cb"]';
             return true;
         } else if ($('#cc').prop('checked')) {
             //$('#Swag').html("This returns a bool m8080");
-            checkeds[qcount - 1] = 'c["cc"]';
+            checkeds[qcount - 1] = 'c[2]["cc"]';
             return true;
         } else if ($('#cd').prop('checked')) {
             //$('#Swag').html("This returns a bool m80808");
-            checkeds[qcount - 1] = 'c["cd"]';
+            checkeds[qcount - 1] = 'c[3]["cd"]';
             return true;
         } else {
             return false;
@@ -258,9 +258,9 @@
             $('#nextButton').show();
             //$('#Swag').html(obj.questions[0].cc);
             $('#question').html(obj.questions[0].q);
-            $('#ca1').html(obj.questions[0].c["ca"]);
-            $('#cb1').html(obj.questions[0].c["cb"]);
-            $('#cc1').html(obj.questions[0].c["cc"]);
-            $('#cd1').html(obj.questions[0].c["cd"]);
+            $('#ca1').html(obj.questions[0].c[0]["ca"]);
+            $('#cb1').html(obj.questions[0].c[1]["cb"]);
+            $('#cc1').html(obj.questions[0].c[2]["cc"]);
+            $('#cd1').html(obj.questions[0].c[3]["cd"]);
         }
     }
