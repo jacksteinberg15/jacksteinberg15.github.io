@@ -5,11 +5,11 @@
     <title>Physics Quiz</title>
     <script src="jquery-2.1.1.min.js"></script>
     <script src='piechart.js'></script>
+    <script src="QuizFunctions.js"></script>
     <script src='QuestionSheet.json' type="application/json"></script>
     <link rel="stylesheet" type="text/css" href="QuizStyles.css">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lobster">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
-    <script src="QuizFunctions.js"></script>
 </head>
 <div id='header'>
     <!-- Added comment for GitHub -->
@@ -25,8 +25,10 @@
 
         <h2>Enter your name</h2>
 
-        <form id='namefrm'>Name:
-            <input id='fn' type="text" name="firstname" value=""></input>
+        <form id='namefrm'>Username:
+            <input id='fn' type="text" name="username" value=""></input>
+            <br/>Password:
+            <input id='pw' type="text" name="password" value=""></input>
             <!-- <br/>Last name: -->
             <!-- input id='ln' type="text" name="lastname" value="Last Name"></input -->
             <br />
@@ -56,6 +58,8 @@
         <br></br>
         <input id='c4' type='radio' name='choices'></input>
         <label id='c41' for="c4">Choice Four</label>
+        <div id='extraqs'>
+        </div>
     </form>
 </div>
 <div id='button'>

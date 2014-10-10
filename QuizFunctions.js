@@ -166,7 +166,6 @@
     //Set buttons to checked if necesary
     function setButtons() {
         if (checkeds[qcount - 1] != 0) {
-            //TODO: Re-add functionality for SHIT YOU BROKE IDIOT!!!! 
             if (checkeds[qcount - 1] == 1) {
                 $('#c1').prop('checked', true);
             } else if (checkeds[qcount - 1] == 2) {
@@ -176,7 +175,6 @@
             } else if (checkeds[qcount - 1] == 4) {
                 $('#c4').prop('checked', true);
             }
-            //TODO: Even this won't work, god you're a fuckup.
         } else {
             $('#c1').prop('checked', false);
             $('#c2').prop('checked', false);
@@ -276,7 +274,7 @@
             $('#c31').html(obj.questions[0].c[2]);
             $('#c41').html(obj.questions[0].c[3]);
             for (i = 0; i <= obj.questions[0].c.length - 4; i++) {
-                $('#questionfrm').append();
+                $('#extraqs').append();
             }
         }
     }
