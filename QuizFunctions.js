@@ -82,12 +82,12 @@
     //Function to step forward a question
     function stepForward() {
         if (checkButtons()) {
-
+            console.log("Swag" + checkeds[qcount - 1]);
             $('#question').html(obj.questions[qcount - 1].q).fadeOut(800);
-            $('#ca1').html(obj.questions[qcount - 1].c[0]["ca"]).fadeOut(800);
-            $('#cb1').html(obj.questions[qcount - 1].c[1]["cb"]).fadeOut(800);
-            $('#cc1').html(obj.questions[qcount - 1].c[2]["cc"]).fadeOut(800);
-            $('#cd1').html(obj.questions[qcount - 1].c[3]["cd"]).fadeOut(800);
+            $('#c11').html(obj.questions[qcount - 1].c[0]).fadeOut(800);
+            $('#c21').html(obj.questions[qcount - 1].c[1]).fadeOut(800);
+            $('#c31').html(obj.questions[qcount - 1].c[2]).fadeOut(800);
+            $('#c41').html(obj.questions[qcount - 1].c[3]).fadeOut(800);
 
             if (qcount < 10)
                 qcount += 1;
@@ -100,10 +100,10 @@
                 $('#backButton').show();
             }
             $('#question').html(obj.questions[qcount - 1].q).fadeIn(800);
-            $('#ca1').hide().html(obj.questions[qcount - 1].c[0]["ca"]).fadeIn(800);
-            $('#cb1').hide().html(obj.questions[qcount - 1].c[1]["cb"]).fadeIn(800);
-            $('#cc1').hide().html(obj.questions[qcount - 1].c[2]["cc"]).fadeIn(800);
-            $('#cd1').hide().html(obj.questions[qcount - 1].c[3]["cd"]).fadeIn(800);
+            $('#c11').hide().html(obj.questions[qcount - 1].c[0]).fadeIn(800);
+            $('#c21').hide().html(obj.questions[qcount - 1].c[1]).fadeIn(800);
+            $('#c31').hide().html(obj.questions[qcount - 1].c[2]).fadeIn(800);
+            $('#c41').hide().html(obj.questions[qcount - 1].c[3]).fadeIn(800);
 
             setButtons();
         }
@@ -113,10 +113,10 @@
     function stepBack() {
         //if (checkButtons()) {
         $('#question').html(obj.questions[qcount - 1].q).fadeOut(800);
-        $('#ca1').html(obj.questions[qcount - 1].c[0]["ca"]).fadeOut(800);
-        $('#cb1').html(obj.questions[qcount - 1].c[1]["cb"]).fadeOut(800);
-        $('#cc1').html(obj.questions[qcount - 1].c[2]["cc"]).fadeOut(800);
-        $('#cd1').html(obj.questions[qcount - 1].c[3]["cd"]).fadeOut(800);
+        $('#c11').html(obj.questions[qcount - 1].c[0]).fadeOut(800);
+        $('#c21').html(obj.questions[qcount - 1].c[1]).fadeOut(800);
+        $('#c31').html(obj.questions[qcount - 1].c[2]).fadeOut(800);
+        $('#c41').html(obj.questions[qcount - 1].c[3]).fadeOut(800);
         if (qcount > 1)
             qcount -= 1;
         //$('#Swag').html(qcount);
@@ -128,10 +128,10 @@
             $('#submitButton').hide();
         }
         $('#question').html(obj.questions[qcount - 1].q).fadeIn(800);
-        $('#ca1').hide().html(obj.questions[qcount - 1].c[0]["ca"]).fadeIn(800);
-        $('#cb1').hide().html(obj.questions[qcount - 1].c[1]["cb"]).fadeIn(800);
-        $('#cc1').hide().html(obj.questions[qcount - 1].c[2]["cc"]).fadeIn(800);
-        $('#cd1').hide().html(obj.questions[qcount - 1].c[3]["cd"]).fadeIn(800);
+        $('#c11').hide().html(obj.questions[qcount - 1].c[0]).fadeIn(800);
+        $('#c21').hide().html(obj.questions[qcount - 1].c[1]).fadeIn(800);
+        $('#c31').hide().html(obj.questions[qcount - 1].c[2]).fadeIn(800);
+        $('#c41').hide().html(obj.questions[qcount - 1].c[3]).fadeIn(800);
 
         setButtons();
         //}
@@ -142,21 +142,21 @@
         //Whenever button pressed check which radio button is pressed,
         //store it, then set all the buttons to which one is checked for
         //the next / prev question
-        if ($('#ca').prop('checked')) {
+        if ($('#c1').prop('checked')) {
             //$('#Swag').html("This returns a bool m80");
-            checkeds[qcount - 1] = '"ca"';
+            checkeds[qcount - 1] = '1';
             return true;
-        } else if ($('#cb').prop('checked')) {
+        } else if ($('#c2').prop('checked')) {
             //$('#Swag').html("This returns a bool m808");
-            checkeds[qcount - 1] = '"cb"';
+            checkeds[qcount - 1] = '2';
             return true;
-        } else if ($('#cc').prop('checked')) {
+        } else if ($('#c3').prop('checked')) {
             //$('#Swag').html("This returns a bool m8080");
-            checkeds[qcount - 1] = '"cc"';
+            checkeds[qcount - 1] = '3';
             return true;
-        } else if ($('#cd').prop('checked')) {
+        } else if ($('#c4').prop('checked')) {
             //$('#Swag').html("This returns a bool m80808");
-            checkeds[qcount - 1] = '"cd"';
+            checkeds[qcount - 1] = '4';
             return true;
         } else {
             return false;
@@ -165,14 +165,23 @@
 
     //Set buttons to checked if necesary
     function setButtons() {
-        if (checkeds[qcount - 1].length > 1) {
-            $('#' + checkeds[qcount - 1]).prop('checked', true);
-            //$('#Swag').html("Swagged to " + checkeds[qcount - 1]);
+        if (checkeds[qcount - 1] != 0) {
+            //TODO: Re-add functionality for SHIT YOU BROKE IDIOT!!!! 
+            if (checkeds[qcount - 1] == 1) {
+                $('#c1').prop('checked', true);
+            } else if (checkeds[qcount - 1] == 2) {
+                $('#c2').prop('checked', true);
+            } else if (checkeds[qcount - 1] == 3) {
+                $('#c3').prop('checked', true);
+            } else if (checkeds[qcount - 1] == 4) {
+                $('#c4').prop('checked', true);
+            }
+            //TODO: Even this won't work, god you're a fuckup.
         } else {
-            $('#ca').prop('checked', false);
-            $('#cb').prop('checked', false);
-            $('#cc').prop('checked', false);
-            $('#cd').prop('checked', false);
+            $('#c1').prop('checked', false);
+            $('#c2').prop('checked', false);
+            $('#c3').prop('checked', false);
+            $('#c4').prop('checked', false);
         }
     }
 
@@ -190,8 +199,10 @@
 
             //remember to deal with color
             for (i = 0; i < 11; i++) {
-                console.log("(obj.questions[" + i + "].c[i][" + checkeds[i] + "])");
-                if ((obj.questions[i].c[i][checkeds[i]]).localeCompare(obj.questions[i]['a']) == 0) {
+                //console.log(obj.questions.length);
+                //console.log("(obj.questions[" + i + "].c[i][" + checkeds[i] + "])");
+                //console.log("" + (obj.questions[i].c[i][checkeds[i]]) + "")
+                if ((obj.questions[i].c[checkeds[i] - 1]).localeCompare(obj.questions[i]['a']) == 0) {
                     $('#r' + (i + 1)).html('<p style=\'color: #00FF00;\'>' + 'Correct' + '</p>');
                     numright += 1;
                 } else {
@@ -260,9 +271,12 @@
             $('#nextButton').show();
             //$('#Swag').html(obj.questions[0].cc);
             $('#question').html(obj.questions[0].q);
-            $('#ca1').html(obj.questions[0].c[0]["ca"]);
-            $('#cb1').html(obj.questions[0].c[1]["cb"]);
-            $('#cc1').html(obj.questions[0].c[2]["cc"]);
-            $('#cd1').html(obj.questions[0].c[3]["cd"]);
+            $('#c11').html(obj.questions[0].c[0]);
+            $('#c21').html(obj.questions[0].c[1]);
+            $('#c31').html(obj.questions[0].c[2]);
+            $('#c41').html(obj.questions[0].c[3]);
+            for (i = 0; i <= obj.questions[0].c.length - 4; i++) {
+                $('#questionfrm').append();
+            }
         }
     }
