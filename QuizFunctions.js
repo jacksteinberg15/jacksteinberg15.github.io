@@ -62,28 +62,20 @@
             obj = response;
         });
 
-        //Snag the user info JSON 
-        $.getJSON("UserInfo.json", function (response) {
-            uInfo = response;
-        });
-
         //Hide the sampled pie chart
         $('#piechart').hide();
     });
 
-    //TODO: get this to load from LS, making sure LS is initialized properly already
     //Method to load the uInfo from LocalStorage
     function fromLocalStorage() {
-        /* 
-        //TODO: Fix this code below
         var LSstring = localStorage.getItem("PhysQuizUserInfo");
         //Check if this length of LSstring is the proper one
-        if (LSstring.length > 58) {
+        if (LSstring != null) {
             uInfo = JSON.parse(LSstring);
-        } else if (LSstring.length > 58) {
-            localStorage.setItem("PhysQuizUserInfo", uInfo.stringify());
+        } else if (LSstring == null) {
+            localStorage.setItem("PhysQuizUserInfo", JSON.stringify(uInfo));
         }
-        */
+        return uInfo;
     }
 
     //TODO: add method to store things in local storage
@@ -262,13 +254,16 @@
             //Check if the name passed in by uName is in the JSON
             //Do so by assuming it's a key and checking if it's value pair gives null
             //Return true if it doesn't exist, false if it exists
-            return false;
+            var interimJSON = fromLocalStorage();
+
+            return true;
         } else if (type.localeCompare("check") == 0) {
             //TODO: V~Below This~V
             //Load the local storage using the fromLocalStorage method
             //Check if the name passed in by uName is in the JSON
             //Do so by assuming it's a key and checking if it's value pair gives null
             //Return true if it exists, false if it doesn't exist
+            fromLocalStorage();
             return false;
         }
     }
