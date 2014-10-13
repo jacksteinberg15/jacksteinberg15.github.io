@@ -255,8 +255,7 @@
             //Do so by assuming it's a key and checking if it's value pair gives null
             //Return true if it doesn't exist, false if it exists
             var interimJSON = fromLocalStorage();
-
-            return true;
+            return false;
         } else if (type.localeCompare("check") == 0) {
             //TODO: V~Below This~V
             //Load the local storage using the fromLocalStorage method
