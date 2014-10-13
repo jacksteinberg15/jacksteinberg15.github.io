@@ -336,6 +336,7 @@
             $('#name_submission').hide();
             $('#quizform').show();
             $('#nextButton').show();
+            $('#authBox').hide();
             $('#question').html(obj.questions[0].q).fadeIn(800);
             $('#c11').hide().html(obj.questions[0].c[0]).fadeIn(800);
             $('#c21').hide().html(obj.questions[0].c[1]).fadeIn(800);
