@@ -72,6 +72,7 @@
         //Check if this length of LSstring is the proper one
         if (LSstring != null) {
             uInfo = JSON.parse(LSstring);
+            console.log(JSON.stringify(uInfo));
         } else if (LSstring == null) {
             localStorage.setItem("PhysQuizUserInfo", JSON.stringify(uInfo));
             console.log(JSON.stringify(uInfo));
@@ -259,14 +260,14 @@
             var interimJSON = fromLocalStorage();
             for (i = 0; i < interimJSON.namesandpws.length; i++) {
                 console.log(JSON.stringify(interimJSON.namesandpws[i]));
-                if (JSON.stringify(interimJSON.namesandpws[i]).indexOf(uName) == -1) {
-                    interimJSON.namesandpws.push('{"' + uName + '": "' + pWord + '"}');
-                    toLocalStorage(interimJSON);
-                    console.log(localStorage.getItem("PhysQuizUserInfo"));
-                    return true;
+                if (JSON.stringify(interimJSON.namesandpws[i]).indexOf(uName) != -1) {
+                    return false;
                 }
             }
-            return false;
+            interimJSON.namesandpws.push('{"' + uName + '": "' + pWord + '"}');
+            toLocalStorage(interimJSON);
+            console.log(localStorage.getItem("PhysQuizUserInfo"));
+            return true;
         } else if (type.localeCompare("check") == 0) {
             //TODO: V~Below This~V
             //Load the local storage using the fromLocalStorage method
