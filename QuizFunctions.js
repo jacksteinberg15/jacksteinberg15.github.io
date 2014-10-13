@@ -330,7 +330,7 @@
         var pass = "" + enteredPass.value;
 
         //Authenticate username and password
-        if (authenticate(pureName, pass, "check")) {
+        if (pass.length >= 1 && pureName.length >= 1 && authenticate(pureName, pass, "check")) {
             //Hide the name things and show the Buttons
             $("Name").html(text);
             $('#name_submission').hide();
