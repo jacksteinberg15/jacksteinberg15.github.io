@@ -74,13 +74,15 @@
             uInfo = JSON.parse(LSstring);
         } else if (LSstring == null) {
             localStorage.setItem("PhysQuizUserInfo", JSON.stringify(uInfo));
+            console.log(JSON.stringify(uInfo));
         }
         return uInfo;
     }
 
     //TODO: add method to store things in local storage
     //Method to store the user info in local storage
-    function toLocalStorage() {
+    function toLocalStorage(daJSON) {
+        localStorage.setItem("PhysQuizUserInfo", JSON.stringify(daJSON));
         //TODO: add in cases to deal with passwords, scores, and names
         //obj.namesandpws.push("name": "pws");
         //obj.namesandscores.push("name": "scores");
@@ -255,6 +257,15 @@
             //Do so by assuming it's a key and checking if it's value pair gives null
             //Return true if it doesn't exist, false if it exists
             var interimJSON = fromLocalStorage();
+            for (i = 0; i < interimJSON.namesandpws.length; i++) {
+                console.log(JSON.stringify(interimJSON.namesandpws[i]));
+                if (JSON.stringify(interimJSON.namesandpws[i]).indexOf(uName) == -1) {
+                    interimJSON.namesandpws.push('{"' + uName + '": "' + pWord + '"}');
+                    toLocalStorage(interimJSON);
+                    console.log(localStorage.getItem("PhysQuizUserInfo"));
+                    return true;
+                }
+            }
             return false;
         } else if (type.localeCompare("check") == 0) {
             //TODO: V~Below This~V
@@ -262,7 +273,15 @@
             //Check if the name passed in by uName is in the JSON
             //Do so by assuming it's a key and checking if it's value pair gives null
             //Return true if it exists, false if it doesn't exist
-            fromLocalStorage();
+            var interimJSON = fromLocalStorage();
+            for (i = 0; i < interimJSON.namesandpws.length; i++) {
+                console.log(JSON.stringify(interimJSON.namesandpws[i]));
+                if (JSON.stringify(interimJSON.namesandpws[i]).indexOf(uName) > -1) {
+                    if (JSON.stringify(interimJSON.namesandpws[i]).indexOf(pWord) > -1) {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
     }
@@ -316,7 +335,7 @@
             $('#name_submission').hide();
             $('#quizform').show();
             $('#nextButton').show();
-            $('#question').hide().html(obj.questions[0].q).fadeIn(800);
+            $('#question').html(obj.questions[0].q).fadeIn(800);
             $('#c11').hide().html(obj.questions[0].c[0]).fadeIn(800);
             $('#c21').hide().html(obj.questions[0].c[1]).fadeIn(800);
             $('#c31').hide().html(obj.questions[0].c[2]).fadeIn(800);
