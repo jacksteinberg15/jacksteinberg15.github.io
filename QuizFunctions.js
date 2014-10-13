@@ -22,8 +22,9 @@
     //Sample JSON texts, so they load as JSON objects properly
     var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}';
     var obj = JSON.parse(text);
-    var text1 = '{"namesandpws": [], "namesandscores": [], "rawscores": []}';
+    var text1 = '{"namesandpws": [], "namesandscores": [], "rawscores": [], "rawnames": []}';
     var uInfo = JSON.parse(text1);
+    var pureName = "";
 
     //jQuery document ready (Runs on HTML load)
     $(document).ready(function () {
@@ -66,15 +67,21 @@
         $('#piechart').hide();
     });
 
+    //Tool to help reset the local storage while programming
+    function resetLS() {
+        localStorage.setItem("PhysQuizUserInfo", JSON.stringify(uInfo));
+    }
+
     //Method to load the uInfo from LocalStorage
     function fromLocalStorage() {
+        //resetLS();
         var LSstring = localStorage.getItem("PhysQuizUserInfo");
         //Check if this length of LSstring is the proper one
         if (LSstring != null) {
             uInfo = JSON.parse(LSstring);
             console.log(JSON.stringify(uInfo));
         } else if (LSstring == null) {
-            localStorage.setItem("PhysQuizUserInfo", JSON.stringify(uInfo));
+            toLocalStorage(uInfo);
             console.log(JSON.stringify(uInfo));
         }
         return uInfo;
@@ -191,7 +198,7 @@
             resetExtraQs();
 
             //remember to deal with color
-            for (i = 0; i < 11; i++) {
+            for (i = 0; i < 10; i++) {
                 //Compare the answer choice chosen to the answer
                 if ((obj.questions[i].c[checkeds[i] - 1]).localeCompare(obj.questions[i]['a']) == 0) {
                     $('#r' + (i + 1)).html('<p style=\'color: #00FF00;\'>' + 'Correct' + '</p>');
@@ -208,8 +215,16 @@
                 drawPC(numright);
             }
 
-            //TODO: Add in a case to save the results of the quiz and send it to browser storage
-            //TODO: Remember to save both name and score, and just score
+            //Storing the score and name
+            var interimJSON1 = fromLocalStorage();
+            //TODO: eliminate duplication
+            interimJSON1.namesandscores.push('{"' + pureName + '": "' + (numright * 10) + '"}');
+            interimJSON1.rawscores.push('{"' + (numright * 10) + '"}');
+            interimJSON1.rawnames.push('{"' + pureName + '"}');
+            toLocalStorage(interimJSON1);
+
+            //Method to display the scores compared to others
+            dispOtherScores();
         }
     }
 
@@ -229,10 +244,20 @@
         });
 
         pieChart.draw();
-
-
     }
 
+    function dispOtherScores() {
+        var tempJSON = fromLocalStorage();
+        console.log(tempJSON.rawscores.length);
+        //TODO: Fix strange formatting
+        for (i = 0; i < tempJSON.rawscores.length; i++) {
+            $('#dispOthers').append("<h2>" + JSON.stringify(tempJSON.rawnames[i]) + "'s Score: </h2>");
+            $('#dispOthers').append("<p>" + JSON.stringify(tempJSON.rawscores[i]) + "</p>");
+            $('#dispOthers').append("<br></br>");
+        }
+    }
+
+    //Append the extra question choices onto the quiz
     function appendEQS() {
         for (i = 0; i < obj.questions[qcount - 1].c.length - 4; i++) {
             $('#extraqs').append(" <input id = 'c" + (5 + i) + "' type = 'radio' name = 'choices'>" +
@@ -242,17 +267,16 @@
         }
     }
 
+    //Reset the extra question choices
     function resetExtraQs() {
         $('#extraqs input').remove();
         $('#extraqs label').remove();
         $('#extraqs br').remove();
     }
 
-    //TODO: Handle authentication of username and password
     //Do so by loading the local storage into a JSON and checking it for matches
     function authenticate(uName, pWord, type) {
         if (type.localeCompare("create") == 0) {
-            //TODO: V~Below This~V
             //Load the local storage using the fromLocalStorage method
             //Check if the name passed in by uName is in the JSON
             //Do so by assuming it's a key and checking if it's value pair gives null
@@ -269,7 +293,6 @@
             console.log(localStorage.getItem("PhysQuizUserInfo"));
             return true;
         } else if (type.localeCompare("check") == 0) {
-            //TODO: V~Below This~V
             //Load the local storage using the fromLocalStorage method
             //Check if the name passed in by uName is in the JSON
             //Do so by assuming it's a key and checking if it's value pair gives null
@@ -294,8 +317,7 @@
         $('#newUser').show();
     }
 
-    //TODO: create a username and password and bump it to local storage
-    //TODO: check if the username already exists
+    //Creates a username and password and bump it to local storage
     function saveUser() {
         //Snag the requested username and password combo
         var username = document.getElementById("fnn");
@@ -306,9 +328,7 @@
 
         //Check that the password and username are defined and not taken
         if (pwn.length >= 1 && unn.length >= 1 && authenticate(unn, pwn, "create")) {
-            //TODO: Push the username and password to uInfo
-            //TODO: Push that to local storage
-            //TODO: Hide and show proper boxes
+            //Hides and shows proper boxes
             $('#newUser').hide();
             $('#authBox').hide();
             $('#nameform').show();
@@ -326,7 +346,7 @@
         var firstName = document.getElementById("fn");
         var enteredPass = document.getElementById("pw");
         var text = "" + firstName.value + "" + "'s Quiz";
-        var pureName = "" + firstName.value;
+        pureName = "" + firstName.value;
         var pass = "" + enteredPass.value;
 
         //Authenticate username and password
