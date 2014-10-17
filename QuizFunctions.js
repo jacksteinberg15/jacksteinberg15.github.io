@@ -219,8 +219,8 @@
             var interimJSON1 = fromLocalStorage();
             //TODO: eliminate duplication
             interimJSON1.namesandscores.push('{"' + pureName + '": "' + (numright * 10) + '"}');
-            interimJSON1.rawscores.push('{"' + (numright * 10) + '"}');
-            interimJSON1.rawnames.push('{"' + pureName + '"}');
+            interimJSON1.rawscores.push((numright * 10));
+            interimJSON1.rawnames.push(pureName);
             toLocalStorage(interimJSON1);
 
             //Method to display the scores compared to others
