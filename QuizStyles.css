@@ -71,3 +71,19 @@ h2 {
     margin-bottom: 25px;
     text-align: CENTER;
 }
+#dispOthers h2 {
+    color: #424FA9;
+    text-align: CENTER;
+    font-size: 36px;
+}
+#dispOthers p {
+    color: #424FA9;
+    text-align: CENTER;
+    font-size: 36px;
+}
+#dispAve h1 {
+    font-family: 'Lobster';
+    color: #424FA9;
+    text-align: CENTER;
+    font-size: 48px;
+}

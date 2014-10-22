@@ -65,6 +65,9 @@
 
         //Hide the sampled pie chart
         $('#piechart').hide();
+
+        //Add a few divs in the dispOthers to sort
+        addDivs();
     });
 
     //Tool to help reset the local storage while programming
@@ -87,7 +90,12 @@
         return uInfo;
     }
 
-    //TODO: add method to store things in local storage
+    function addDivs() {
+        for (i = 10; i > 0; i--) {
+            $('#dispOthers').append("<div id='dispSec" + (i * 10) + "'></div>");
+        }
+    }
+
     //Method to store the user info in local storage
     function toLocalStorage(daJSON) {
         localStorage.setItem("PhysQuizUserInfo", JSON.stringify(daJSON));
@@ -246,14 +254,25 @@
         pieChart.draw();
     }
 
+    //Calculate and display the average score
+    function calcAve(tempJSON) {
+        var sum = 0;
+        for (i = 0; i < tempJSON.rawscores.length; i++) {
+            sum += Number(tempJSON.rawscores[i]);
+        }
+        var ave = ((sum) / (tempJSON.rawscores.length));
+        $('#dispAve').append("<h1>Average: " + ave.toFixed(2) + "%</h1>");
+    }
+
+    //Display the other peoples' scores
     function dispOtherScores() {
         var tempJSON = fromLocalStorage();
         console.log(tempJSON.rawscores.length);
-        //TODO: Fix strange formatting
+        calcAve(tempJSON);
         for (i = 0; i < tempJSON.rawscores.length; i++) {
-            $('#dispOthers').append("<h2>" + JSON.stringify(tempJSON.rawnames[i]) + "'s Score: </h2>");
-            $('#dispOthers').append("<p>" + JSON.stringify(tempJSON.rawscores[i]) + "</p>");
-            $('#dispOthers').append("<br></br>");
+            $('#dispSec' + Number(tempJSON.rawscores[i])).append("<h2>" + tempJSON.rawnames[i] + "'s Score: </h2>");
+            $('#dispSec' + Number(tempJSON.rawscores[i])).append("<p>" + JSON.stringify(tempJSON.rawscores[i]) + "%</p>");
+            //$('#dispSec' + Number(tempJSON.rawscores[i])).append("<br></br>");
         }
     }
 
