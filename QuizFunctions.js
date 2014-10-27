@@ -11,6 +11,8 @@
     This project relies heavily on jQuery access and 
     modification of HTML Elements in my index.html
     
+    ORCHESTRATE DATABASE
+    HEROKU
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     */
 
@@ -28,7 +30,6 @@
 
     //jQuery document ready (Runs on HTML load)
     $(document).ready(function () {
-        console.log(text1.length);
         //Hide quiz things and buttons
         $('#quizform').hide();
         $('#backButton').hide();
@@ -66,6 +67,10 @@
         //Hide the sampled pie chart
         $('#piechart').hide();
 
+        //Replace title with quiz title
+        $('Title').text(obj.title);
+        $('#header h1').text(obj.title);
+
         //Add a few divs in the dispOthers to sort
         addDivs();
     });
@@ -99,14 +104,6 @@
     //Method to store the user info in local storage
     function toLocalStorage(daJSON) {
         localStorage.setItem("PhysQuizUserInfo", JSON.stringify(daJSON));
-        //TODO: add in cases to deal with passwords, scores, and names
-        //obj.namesandpws.push("name": "pws");
-        //obj.namesandscores.push("name": "scores");
-        //obj.rawscores.push("name");
-
-        //Stringify the JSON
-        //localStorage.setItem("daJSON", jsonname.stringify());
-        //Retrieval localStorage.getItem("lastname");
     }
 
     //Function to step forward a question
@@ -129,6 +126,8 @@
             }
             //Fade in the next set of questions and choices
             $('#question').hide().html(obj.questions[qcount - 1].q).fadeIn(800);
+            //Swap Flickr picture
+            loadFlickr(obj.questions[qcount - 1].tag);
             $('#c11').hide().html(obj.questions[qcount - 1].c[0]).fadeIn(800);
             $('#c21').hide().html(obj.questions[qcount - 1].c[1]).fadeIn(800);
             $('#c31').hide().html(obj.questions[qcount - 1].c[2]).fadeIn(800);
@@ -157,6 +156,8 @@
         }
         //Fade in next questions
         $('#question').hide().html(obj.questions[qcount - 1].q).fadeIn(800);
+        //Swap Flickr picture
+        loadFlickr(obj.questions[qcount - 1].tag);
         $('#c11').hide().html(obj.questions[qcount - 1].c[0]).fadeIn(800);
         $('#c21').hide().html(obj.questions[qcount - 1].c[1]).fadeIn(800);
         $('#c31').hide().html(obj.questions[qcount - 1].c[2]).fadeIn(800);
@@ -192,6 +193,35 @@
         }
     }
 
+    // TODO: FLICKR STUFF
+    //Load the Flickr images
+    function loadFlickr(tag) {
+        $.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=44a4d773a71dfa0549f44f4ac10d4afe&text=" +
+            tag + "&format=json&nojsoncallback=1", displayImages);
+    }
+
+    //Display the Flickr images
+    function displayImages(data) {
+
+        // Start putting together the HTML string
+        var htmlString = "";
+
+        console.log(data);
+        // Now start cycling through our array of Flickr photo details
+        // Here's where we piece together the HTML
+        //Link format https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
+        htmlString += '<br><a href="' + "https://farm" + data.photos.photo[0].farm + ".staticflickr.com/" + data.photos.photo[0].server +
+            "/" + data.photos.photo[0].id + "_" + data.photos.photo[0].secret + ".jpg" + '" target="_blank">';
+        htmlString += '<img title="' + data.photos.photo[0].title + '" src="' + "https://farm" + data.photos.photo[0].farm + ".staticflickr.com/" + data.photos.photo[0].server + "/" + data.photos.photo[0].id + "_" + data.photos.photo[0].secret + ".jpg";
+        htmlString += '" alt="';
+        htmlString += data.photos.photo[0].title + '" />';
+        htmlString += '</a>';
+        console.log(htmlString);
+        // Pop our HTML in the #images DIV
+        $('#imageFrame').html(htmlString);
+        // Close down the JSON function call
+    }
+
     //function to submit a quiz
     function subQuiz() {
         //Make sure to answer the last question
@@ -199,6 +229,7 @@
             var numright = 0;
             //hide other unnecesary frames, and show results
             $('#quizform').hide();
+            $('#imageFrame').hide();
             $('#backButton').hide();
             $('#submitButton').hide();
             $('#resultsfrm').show();
@@ -377,6 +408,7 @@
             $('#nextButton').show();
             $('#authBox').hide();
             $('#question').html(obj.questions[0].q).fadeIn(800);
+            loadFlickr(obj.questions[0].tag);
             $('#c11').hide().html(obj.questions[0].c[0]).fadeIn(800);
             $('#c21').hide().html(obj.questions[0].c[1]).fadeIn(800);
             $('#c31').hide().html(obj.questions[0].c[2]).fadeIn(800);

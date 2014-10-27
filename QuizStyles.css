@@ -8,6 +8,13 @@ body {
     font-size: 36px;
     margin-bottom: 25px;
 }
+#Rheader {
+    font-family: 'Lobster';
+    color: #4D9979;
+    text-align: CENTER;
+    font-size: 36px;
+    margin-bottom: 25px;
+}
 #name_display {
     font-family: 'Oswald';
     color: #4D9979;
@@ -34,6 +41,9 @@ p {
 #newUserfrm {
     font-family: 'Oswald';
     color: #4D9979;
+}
+#imageFrame {
+    text-align: center
 }
 h1 {
     margin-bottom: 25px;
