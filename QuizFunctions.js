@@ -11,6 +11,9 @@
     This project relies heavily on jQuery access and 
     modification of HTML Elements in my index.html
     
+                  ~~©Jack Steinberg, 2014~~
+        ~~jack.steinberg15@trinityschoolnyc.org~~
+    
     ORCHESTRATE DATABASE
     HEROKU
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
