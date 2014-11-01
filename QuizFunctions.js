@@ -51,8 +51,8 @@
             data: [(numright / 10) * 360, ((10 - numright) / 10) * 360],
             labels: ["" + numright + "0%", "" + (10 - numright) + "0%"],
             colors: [
-                    ["#00FF00", "#00FF00"],
-                    ["#FF0000", "#FF0000"]
+                    ["#2F9E00", "#2F9E00"],
+                    ["#B80000", "#B80000"]
                 ]
         });
 
@@ -243,17 +243,17 @@
             for (i = 0; i < 10; i++) {
                 //Compare the answer choice chosen to the answer
                 if ((obj.questions[i].c[checkeds[i] - 1]).localeCompare(obj.questions[i]['a']) == 0) {
-                    $('#r' + (i + 1)).html('<p style=\'color: #00FF00;\'>' + 'Correct' + '</p>');
+                    $('#r' + (i + 1)).html('<p style=\'color: #2F9E00;\'>' + 'Correct' + '</p>');
                     numright += 1;
                 } else {
-                    $('#r' + (i + 1)).html('<p style=\'color: #FF0000;\'>' + 'Incorrect' + '</p>');
+                    $('#r' + (i + 1)).html('<p style=\'color: #B80000;\'>' + 'Incorrect' + '</p>');
                 }
 
                 //Color selection (green vs red)
                 if (numright < 7)
-                    $('#ratio').html('<h1 style=\'color: #FF0000;\'>' + numright + '/10</h1>');
+                    $('#ratio').html('<h1 style=\'color: #B80000;\'>' + numright + '/10</h1>');
                 else if (numright >= 7)
-                    $('#ratio').html('<h1 style=\'color: #00FF00;\'>' + numright + '/10</h1>');
+                    $('#ratio').html('<h1 style=\'color: #2F9E00;\'>' + numright + '/10</h1>');
                 drawPC(numright);
             }
 
@@ -280,8 +280,8 @@
             data: [(numsright / 10) * 360, ((10 - numsright) / 10) * 360],
             labels: ["" + numsright + "0%", "" + (10 - numsright) + "0%"],
             colors: [
-                    ["#00FF00", "#00FF00"],
-                    ["#FF0000", "#FF0000"]
+                    ["#2F9E00", "#2F9E00"],
+                    ["#B80000", "#B80000"]
                 ]
         });
 

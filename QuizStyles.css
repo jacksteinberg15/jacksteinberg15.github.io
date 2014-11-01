@@ -1,5 +1,5 @@
 body {
-    background-color: #BEE6EB;
+    background-color: #52D9CF;
 }
 #header {
     font-family: 'Lobster';
@@ -83,17 +83,22 @@ h2 {
 }
 #dispOthers h2 {
     color: #424FA9;
-    text-align: CENTER;
+    text-align: center;
     font-size: 36px;
 }
 #dispOthers p {
     color: #424FA9;
-    text-align: CENTER;
+    text-align: center;
     font-size: 36px;
 }
 #dispAve h1 {
     font-family: 'Lobster';
     color: #424FA9;
-    text-align: CENTER;
+    text-align: center;
     font-size: 48px;
+}
+#links {
+    font-family: 'Oswald';
+    text-align: center;
+    font-size: 12px;
 }
